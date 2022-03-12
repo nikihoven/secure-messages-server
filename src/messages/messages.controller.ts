@@ -10,16 +10,16 @@ export class MessagesController {
 
     @Post('/create')
     createMessage(@Body() createMessageDto: CreateMessageDto) {
-        return
+        return this.messagesService.createMessage(createMessageDto)
     }
 
     @Get('/validate/:url')
     validateMessageUrl(@Param('url') url: string) {
-        return
+        return this.messagesService.validMessageUrl(url)
     }
 
     @Post('/decrypt/:url')
     getDecryptedMessage(@Param('url') url: string, @Body() data) {
-        return
+        return this.messagesService.decryptMessage({url, passphrase: data.passphrase})
     }
 }
